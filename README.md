@@ -1,11 +1,12 @@
-[![DOI](https://zenodo.org)](https://doi.org)
+drmarolla/rmti-oncology-sandbox
+DOI: 10.5281/zenodo.22909091
 
 # RMTI Sandbox — Oncology & Public Health Surveillance
 
 **An interactive reference implementation of the Risk Mechanism Theory Index (RMTI) for hepatocellular carcinoma (HCC) surveillance and other public-health surveillance settings.**
 By Dr. Cesar Marolla
 
-### ▶ Open the live sandbox: [https://github.io](https://github.io)
+### ▶ Open the live sandbox: https://drmarolla.github.io/rmti-oncology-sandbox/
 
 > **Research prototype for education and research only.** This sandbox is a teaching companion and a methodological reference. It is **not** a medical device, has **not** been clinically validated, is **not** for patient-care decisions, and does **not** provide medical advice, diagnosis or treatment recommendations. Clinical decisions remain the responsibility of qualified healthcare professionals. Please read [DISCLAIMER.md](DISCLAIMER.md).
 
@@ -65,25 +66,3 @@ Rounding follows the half-up convention so that browser results match the Python
 The sandbox is a single self-contained HTML file. All calculations run in your browser. There are no accounts, no analytics and no server that receives what you type. Saved cases exist only in the open browser tab and disappear when you reload or close it. The page does load its web fonts from Google Fonts, so your browser contacts that service to display them; nothing you enter is sent.
 
 **Please do not type patient names or any identifying details** into the field, case or label boxes.
-
-## Run it yourself
-
-Download `index.html` and open it in any modern browser, or host it for free on GitHub Pages, Netlify or Vercel. On GitHub Pages: *Settings → Pages → Deploy from a branch → `main` / root*.
-
-## Cite this software
-
-Use GitHub's **Cite this repository** button (right-hand sidebar; it reads `CITATION.cff`). Released versions are archived on Zenodo, and the DOI is shown in this repository once it has been assigned.
-
-Please also cite the RMTI publication on which the method rests:
-
-> Marolla, C. (2025). Enhancing urban resilience to California wildfires: A systemic risk mechanism design and theory framework for a comprehensive risk assessment. *International Journal of Management and Data Analytics, 5*(1), 60–77. https://doi.org
-
-## Related work
-
-- Marolla, C. (2026). Application of RMTI to HCC surveillance. *In preparation.*
-- Marolla, C. *Risk by Design: Integrating Disaster, Environment, and Health in the Urban Century.* CRC Press / Taylor & Francis. *In preparation.*
-- The disaster-science version of the sandbox is a separate tool with its own scope and notices: [https://github.io](https://github.io).
-
-## License
-
-The software is released under the [MIT License](LICENSE). The MIT License covers the code. The RMTI method, rubrics and tier structure are the author's published work and should be cited when used.
