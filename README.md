@@ -1,13 +1,11 @@
+[![DOI](https://zenodo.org)](https://doi.org)
+
 # RMTI Sandbox — Oncology & Public Health Surveillance
 
 **An interactive reference implementation of the Risk Mechanism Theory Index (RMTI) for hepatocellular carcinoma (HCC) surveillance and other public-health surveillance settings.**
 By Dr. Cesar Marolla
 
-<!-- DOI badge: after your first Zenodo release, replace XXXXXXX with your concept DOI number and delete the comment markers around the line below.
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
--->
-
-### ▶ Open the live sandbox: [https://drmarolla.github.io/rmti-oncology-sandbox/](https://drmarolla.github.io/rmti-oncology-sandbox/)
+### ▶ Open the live sandbox: [https://github.io](https://github.io)
 
 > **Research prototype for education and research only.** This sandbox is a teaching companion and a methodological reference. It is **not** a medical device, has **not** been clinically validated, is **not** for patient-care decisions, and does **not** provide medical advice, diagnosis or treatment recommendations. Clinical decisions remain the responsibility of qualified healthcare professionals. Please read [DISCLAIMER.md](DISCLAIMER.md).
 
@@ -78,13 +76,13 @@ Use GitHub's **Cite this repository** button (right-hand sidebar; it reads `CITA
 
 Please also cite the RMTI publication on which the method rests:
 
-> Marolla, C. (2025). Enhancing urban resilience to California wildfires: A systemic risk mechanism design and theory framework for a comprehensive risk assessment. *International Journal of Management and Data Analytics, 5*(1), 60–77. https://doi.org/10.5281/zenodo.14948760
+> Marolla, C. (2025). Enhancing urban resilience to California wildfires: A systemic risk mechanism design and theory framework for a comprehensive risk assessment. *International Journal of Management and Data Analytics, 5*(1), 60–77. https://doi.org
 
 ## Related work
 
 - Marolla, C. (2026). Application of RMTI to HCC surveillance. *In preparation.*
 - Marolla, C. *Risk by Design: Integrating Disaster, Environment, and Health in the Urban Century.* CRC Press / Taylor & Francis. *In preparation.*
-- The disaster-science version of the sandbox is a separate tool with its own scope and notices: [https://drmarolla.github.io/rmti-disaster-science-sandbox/](https://drmarolla.github.io/rmti-disaster-science-sandbox/).
+- The disaster-science version of the sandbox is a separate tool with its own scope and notices: [https://github.io](https://github.io).
 
 ## License
 
