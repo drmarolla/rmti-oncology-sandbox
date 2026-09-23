@@ -1,0 +1,26 @@
+{
+  "upload_type": "software",
+  "title": "RMTI Sandbox — Oncology and Public Health Surveillance: Reference Implementation of the Risk Mechanism Theory Index",
+  "creators": [
+    {
+      "name": "Marolla, Cesar",
+      "orcid": "0000-0001-8498-7380"
+    }
+  ],
+  "description": "<p>Interactive, self-contained reference implementation (a single HTML file) of the Risk Mechanism Theory Index (RMTI) for hepatocellular carcinoma (HCC) surveillance and other public-health surveillance settings. It implements the RMTI equations R = L·E·V·(1−ρ) and EAL = L·C·(1−ρ), the fixed five-tier scale, and a log-normalized exposure helper, with worked surveillance profiles and a Custom / Your Field mode in which users name and score their own field.</p><p><strong>Intended use and limitations.</strong> Research prototype for education and research only. This software is not a medical device, has not been clinically validated, is not for patient-care decisions, and does not provide medical advice, diagnosis or treatment recommendations. Its scores are relative, rubric-based indices, not probabilities for individual patients, and the messages shown next to them are framework readings offered for discussion, not recommendations. The tool shows an acknowledgement dialog on opening and a persistent notice. Clinical decisions remain the responsibility of qualified healthcare professionals. The HCC application is the subject of work in preparation that has not completed peer review.</p><p>A separate sandbox covers urban and disaster-risk applications.</p>",
+  "keywords": [
+    "Risk Mechanism Theory Index",
+    "RMTI",
+    "hepatocellular carcinoma",
+    "HCC surveillance",
+    "oncology",
+    "public health surveillance",
+    "risk modeling",
+    "teaching tool",
+    "interactive calculator"
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "language": "eng",
+  "notes": "Research prototype for education and research only; not a medical device; not for patient-care decisions. Released under the MIT License."
+}

@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+type: software
+title: "RMTI Sandbox — Oncology and Public Health Surveillance: Reference Implementation of the Risk Mechanism Theory Index"
+version: 1.0.0
+# date-released: "YYYY-MM-DD"   # add the date of your GitHub release
+# doi: "10.5281/zenodo.XXXXXXX" # after the first release, remove the # and put the Zenodo CONCEPT DOI here
+authors:
+  - family-names: Marolla
+    given-names: Cesar
+    orcid: "https://orcid.org/0000-0001-8498-7380"
+    # affiliation: "Your institution"
+license: MIT
+repository-code: "https://github.com/drmarolla/rmti-oncology-sandbox"
+url: "https://drmarolla.github.io/rmti-oncology-sandbox/"
+abstract: "Interactive, self-contained reference implementation of the Risk Mechanism Theory Index (RMTI) for hepatocellular carcinoma (HCC) surveillance and public-health surveillance settings. For educational and research use only; not a medical device."
+keywords:
+  - "Risk Mechanism Theory Index"
+  - "RMTI"
+  - "hepatocellular carcinoma"
+  - "HCC surveillance"
+  - "oncology"
+  - "public health surveillance"
+  - "risk modeling"
+  - "teaching tool"
+  - "interactive calculator"
+references:
+  - type: article
+    authors:
+      - family-names: Marolla
+        given-names: Cesar
+    title: "Enhancing urban resilience to California wildfires: A systemic risk mechanism design and theory framework for a comprehensive risk assessment"
+    journal: "International Journal of Management and Data Analytics"
+    year: 2025
+    volume: "5"
+    issue: "1"
+    start: 60
+    end: 77
+    doi: "10.5281/zenodo.14948760"
