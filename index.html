@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>RMTI Sandbox — Public Health / Oncology · Risk Mechanism Theory Index Calculator</title>
-<meta name="description" content="Interactive companion calculator for the Risk Mechanism Theory Index (RMTI) — public health, oncology surveillance risk — Cesar Marolla.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RMTI Sandbox — Oncology &amp; Public Health Surveillance · Risk Mechanism Theory Index Calculator</title>
+<meta name="description" content="Interactive companion calculator for the Risk Mechanism Theory Index (RMTI) — oncology (HCC) and public health surveillance — Cesar Marolla.">
 <style>
   :root{
     --ink:#182420;
@@ -21,27 +21,14 @@
     --orange:#d9822f;
     --maroon:#7a2419;
     --radius:14px;
+    /* System font stacks — no network request, so the page renders
+       identically online or fully offline. Each stack leads with the
+       modern CSS keyword (system-ui / ui-serif / ui-monospace) and falls
+       back to widely pre-installed faces that approximate the original
+       Inter / Source Serif 4 / IBM Plex Mono choices. */
     --font-sans: system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
     --font-serif: ui-serif,Georgia,Cambria,'Times New Roman',Times,serif;
     --font-mono: ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace;
-    box-sizing:border-box;
-    padding-top:env(safe-area-inset-top,0px);
-    padding-bottom:env(safe-area-inset-bottom,0px);
-  }
-  html{scroll-padding-top:env(safe-area-inset-top,0px);}
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --ink:#e8ece7; --forest:#5fb98a; --forest-dark:#7fd4a8;
-      --terracotta:#e8845f; --gold:#e0b84a; --cream:#14201b;
-      --paper:#1c2b24; --panel:#223229; --line:#34453c;
-      --muted:#9db3a8; --sage:#8fc49c; --orange:#e8985a; --maroon:#e0897a;
-    }
-  }
-  :root[data-theme="dark"]{
-    --ink:#e8ece7; --forest:#5fb98a; --forest-dark:#7fd4a8;
-    --terracotta:#e8845f; --gold:#e0b84a; --cream:#14201b;
-    --paper:#1c2b24; --panel:#223229; --line:#34453c;
-    --muted:#9db3a8; --sage:#8fc49c; --orange:#e8985a; --maroon:#e0897a;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
@@ -53,6 +40,8 @@
     -webkit-font-smoothing:antialiased;
   }
   .wrap{max-width:1080px;margin:0 auto;padding:28px 20px 60px;}
+
+  /* ---------- Header ---------- */
   header{padding:6px 0 22px;border-bottom:1px solid var(--line);margin-bottom:22px;}
   .eyebrow{
     font-family:var(--font-mono);
@@ -67,6 +56,8 @@
   header p.lede{max-width:640px;color:var(--muted);font-size:15.5px;margin:0;}
   header .byline{margin-top:14px;font-size:13px;color:var(--muted);}
   header .byline b{color:var(--ink);}
+
+  /* ---------- Domain tabs ---------- */
   .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
   .tab{
     font-family:var(--font-sans);font-size:13.5px;font-weight:600;
@@ -76,7 +67,10 @@
   }
   .tab:hover{border-color:var(--forest);color:var(--forest);}
   .tab.active{background:var(--forest);border-color:var(--forest);color:#fff;}
+
   .domain-note{font-size:13px;color:var(--muted);margin:0 0 18px;max-width:680px;}
+
+  /* ---------- Example chips ---------- */
   .examples-label{font-size:12px;font-weight:600;color:var(--muted);margin:0 0 8px;text-transform:uppercase;letter-spacing:.04em;}
   .examples-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:14px;margin-bottom:6px;}
   .example-chip{
@@ -87,8 +81,11 @@
   }
   .example-chip:hover{border-color:var(--terracotta);color:var(--terracotta);}
   .example-chip.demo{border-style:dashed;}
+
+  /* ---------- Grid layout ---------- */
   .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:18px;margin-top:6px;}
   @media (max-width:820px){.grid{grid-template-columns:1fr;}}
+
   .card{
     background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
     padding:22px 22px 24px;
@@ -97,6 +94,8 @@
     font-family:var(--font-serif);font-size:18px;margin:0 0 16px;
     color:var(--forest-dark);font-weight:600;
   }
+
+  /* ---------- Sliders ---------- */
   .field{margin-bottom:18px;}
   .field:last-child{margin-bottom:0;}
   .field-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;gap:10px;}
@@ -117,9 +116,11 @@
     width:18px;height:18px;border-radius:50%;background:var(--paper);
     border:3px solid var(--forest);cursor:pointer;
   }
+
   .divider{border-top:1px dashed var(--line);margin:20px 0;padding-top:18px;}
   .compare-toggle{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;margin-bottom:14px;cursor:pointer;user-select:none;}
   .compare-toggle input{width:16px;height:16px;accent-color:var(--forest);}
+
   .cbtns{display:flex;gap:6px;flex-wrap:wrap;}
   .cbtn{
     flex:1 1 auto;min-width:60px;font-size:11px;text-align:center;
@@ -128,6 +129,7 @@
     line-height:1.25;
   }
   .cbtn.active{background:var(--gold);border-color:var(--gold);color:#3a2c05;}
+
   .pop-row{display:flex;gap:8px;margin-top:8px;}
   .pop-row input[type=number]{
     flex:1;padding:8px 10px;border:1px solid var(--line);border-radius:8px;
@@ -139,6 +141,8 @@
     cursor:pointer;white-space:nowrap;
   }
   .pop-row button:hover{background:var(--forest);color:#fff;}
+
+  /* ---------- Results ---------- */
   .score-block{display:flex;align-items:flex-end;gap:16px;margin-bottom:6px;}
   .score-big{font-family:var(--font-serif);font-weight:700;font-size:56px;line-height:1;color:var(--ink);}
   .tier-pill{
@@ -147,6 +151,7 @@
   }
   .action-line{font-size:13.5px;color:var(--muted);margin:8px 0 18px;}
   .action-line b{color:var(--ink);}
+
   .scale-wrap{position:relative;margin:32px 0 20px;}
   .scale-track{height:10px;border-radius:6px;overflow:hidden;display:flex;}
   .scale-track div{height:100%;}
@@ -160,6 +165,7 @@
   }
   .marker.after-marker{background:var(--terracotta);}
   .marker.after-marker::after{color:var(--terracotta);}
+
   .equation-box{
     background:var(--forest-dark);color:#eef4f0;border-radius:10px;
     padding:16px 18px;font-family:var(--font-mono);font-size:13px;
@@ -167,16 +173,20 @@
   }
   .equation-box .r1{color:#a9c9b8;}
   .equation-box b{color:#fff;}
+
   .eal-row{display:flex;gap:14px;margin-top:4px;}
   .eal-box{flex:1;background:var(--panel);border-radius:10px;padding:14px 16px;}
   .eal-box .k{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:600;margin-bottom:4px;}
   .eal-box .v{font-family:var(--font-mono);font-size:19px;font-weight:600;color:var(--forest-dark);}
   .eal-box .sub{font-size:11.5px;color:var(--muted);margin-top:2px;}
+
   .reduction-note{
     margin-top:16px;padding:12px 14px;border-radius:10px;background:#fbf3e6;
     border:1px solid #eadfc4;font-size:13px;color:#5c4a12;
   }
   .reduction-note b{color:#3a2c05;}
+
+  /* ---------- Footer ---------- */
   .footer-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:18px;}
   @media (max-width:820px){.footer-grid{grid-template-columns:1fr;}}
   .tier-table{width:100%;border-collapse:collapse;font-size:12.5px;}
@@ -185,12 +195,15 @@
   .tier-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:middle;}
   .formula-ref{font-family:var(--font-mono);font-size:12.5px;color:var(--muted);line-height:1.9;}
   .formula-ref b{color:var(--ink);}
+
   footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);}
   footer a{color:var(--forest);}
+
   @media (max-width:480px){
     .score-big{font-size:44px;}
     .eal-row{flex-direction:column;}
   }
+
   .rp-banner{background:#fbeeea;border:1px solid #efcfc6;border-left:4px solid var(--maroon);border-radius:8px;padding:9px 14px;margin:0 0 18px;font-size:13px;color:#5b2417;}
   .rp-banner button,.linklike{background:none;border:none;padding:0;margin-left:6px;color:var(--maroon);font-weight:700;text-decoration:underline;cursor:pointer;font-size:13px;font-family:inherit;}
   .inline-notice{font-size:12px;color:var(--muted);border-top:1px dashed var(--line);margin-top:10px;padding-top:8px;}
@@ -204,7 +217,9 @@
   .modal .m-actions button{background:var(--forest);color:#fff;border:none;border-radius:8px;padding:11px 20px;font-size:14px;font-weight:600;cursor:pointer;}
   .modal .m-actions button:hover{background:var(--forest-dark);}
   .modal .m-note{font-size:12px;color:var(--muted);}
+
   [hidden]{display:none !important;}
+  /* ---------- Custom / Your Field panel ---------- */
   .custom-panel{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:var(--radius);padding:18px 20px 16px;margin:0 0 18px;}
   .custom-panel h2{font-family:var(--font-serif);font-size:17px;margin:0 0 4px;color:var(--forest-dark);font-weight:600;}
   .custom-panel .cp-sub{font-size:12.5px;color:var(--muted);margin:0 0 14px;}
@@ -245,30 +260,31 @@
 <div class="wrap">
 
   <header>
-    <div class="eyebrow">RMTI Sandbox · Public Health / Oncology · Live Calculator</div>
+    <div class="eyebrow">RMTI Sandbox · Oncology &amp; Public Health Surveillance · Live Calculator</div>
     <h1>Risk Mechanism Theory Index</h1>
-    <p class="lede">Score any surveillance cohort, patient pathway, or programme on one bounded 0–1 scale — exposure and vulnerability raise the number, resilience brings it down. Use the Public Health / Oncology tab for HCC surveillance worked cases, or the Custom / Your Field tab to name and score your own field.</p>
+    <p class="lede">Score a surveillance cohort or patient profile on one bounded 0–1 scale — likelihood, exposure and vulnerability raise the number, surveillance and care resilience bring it down. Use the Public Health / Oncology Surveillance tab for the worked HCC profiles, or the Custom / Your Field tab to name and score your own field.</p>
     <div class="byline">Companion calculator for the Risk Mechanism Theory Index (RMTI) · <b>Cesar Marolla</b> · R = L·E·V·(1−ρ)</div>
   </header>
 
-
+  <div class="rp-banner" role="note"><b>Research prototype.</b> Not a medical device, not clinically validated, and not for patient-care decisions. <button type="button" id="btn-notice">Read the full notice</button></div>
   <div class="tabs" id="tabs"></div>
   <p class="domain-note" id="domainNote"></p>
 
+  <!-- Custom / Your Field: name the field and the case being analysed -->
   <section class="custom-panel" id="customPanel" hidden>
     <h2>Name your field and case</h2>
     <p class="cp-sub">Type the field you are analysing and the specific case, just as the worked examples are named. Both appear on your result.</p>
     <div class="cp-grid">
       <div class="cp-field">
         <label for="in-field">Field of study</label>
-        <input type="text" id="in-field" maxlength="80" placeholder="e.g., Another cancer, epidemic early-warning, screening programme" autocomplete="off">
+        <input type="text" id="in-field" maxlength="80" placeholder="e.g., Cholera early warning, Colorectal cancer screening" autocomplete="off">
       </div>
       <div class="cp-field">
         <label for="in-case">Case / unit analysed</label>
-        <input type="text" id="in-case" maxlength="80" placeholder="e.g., Colorectal cancer screening cohort" autocomplete="off">
+        <input type="text" id="in-case" maxlength="80" placeholder="e.g., Programme, region or cohort name" autocomplete="off">
       </div>
     </div>
-
+    <div class="cp-warn"><b>Do not type patient names or any identifying details</b> in these boxes or in saved cases. Use a programme, cohort or profile label instead.</div>
     <details class="relabel">
       <summary>Relabel the five inputs for your field (optional)</summary>
       <div class="relabel-grid">
@@ -322,9 +338,9 @@
       </div>
 
       <div class="divider">
-        <label class="compare-toggle"><input type="checkbox" id="compareToggle" checked> Compare against a planned resilience investment</label>
+        <label class="compare-toggle"><input type="checkbox" id="compareToggle" checked> <span id="compareLabelText">Compare against a planned surveillance improvement</span></label>
         <div class="field" id="afterField">
-          <div class="field-top"><label>Resilience after investment (ρ)</label><span class="val" id="val-rhoAfter">0.58</span></div>
+          <div class="field-top"><label id="lbl-rhoAfter">Resilience after surveillance improvement (ρ)</label><span class="val" id="val-rhoAfter">0.58</span></div>
           <input type="range" id="in-rhoAfter" min="0" max="1" step="0.01" value="0.58">
         </div>
       </div>
@@ -388,11 +404,27 @@
   </div>
 
   <footer>
-    © 2026 Dr. Cesar Marolla. Reference implementation of the Risk Mechanism Theory Index (RMTI) for public health and oncology surveillance risk assessment. Rubrics, fixed tiers, and the log‑normalized exposure transform are original to the author's published work. This is an educational teaching companion: scores are relative, rubric-based indices, not forecasts or actuarial figures, and do not replace a full risk assessment or professional judgment. This is an independent academic tool. Source code: <span id="repoSlot"></span> (<span id="licenseSlot"></span>). Citable on Zenodo: <span id="doiSlot"></span>. Version <span id="verSlot"></span>. <span id="citeSlot"></span>
+    © 2026 Dr. Cesar Marolla. Reference implementation of the Risk Mechanism Theory Index (RMTI) for public health and oncology (HCC) surveillance. Research prototype for educational and research use: it is not a medical device, has not been clinically validated, and is not a substitute for clinical judgment or current clinical guidelines. It does not diagnose, predict outcomes for individual patients, or prescribe treatment, and its on-screen readings are not recommendations for any patient. Decisions about patient care remain with the treating clinicians. Do not enter patient-identifiable information. Source code: <span id="repoSlot"></span> (<span id="licenseSlot"></span>). Citable on Zenodo: <span id="doiSlot"></span>. Version <span id="verSlot"></span>. <span id="citeSlot"></span>
   </footer>
 
 </div>
-
+<div class="modal-overlay" id="noticeModal" role="dialog" aria-modal="true" aria-labelledby="noticeTitle" hidden>
+  <div class="modal">
+    <h2 id="noticeTitle">Before you use this tool</h2>
+    <p class="lead">This is a research and teaching prototype. Please read what it is, and what it is not.</p>
+    <ul>
+      <li><b>What it does.</b> It applies the Risk Mechanism Theory Index (RMTI) to hepatocellular carcinoma (HCC) and other surveillance settings. It turns the numbers you enter into a relative, rubric-based score, a tier and a &ldquo;framework reading&rdquo;. It shows its equations and every input so the logic can be checked.</li>
+      <li><b>What it is not.</b> It is not a medical device and has not been reviewed, cleared or approved by the FDA or any other regulator. It has not been clinically validated, and the HCC application is unpublished work in preparation that has not completed peer review. Its scores are not probabilities that a person will develop cancer. It does not diagnose, stage, predict outcomes or prescribe treatment.</li>
+      <li><b>How to read the messages on screen.</b> Statements about surveillance intensity, work-up or referral are readings of the research framework, offered for discussion by a clinical team. They are not recommendations for any patient.</li>
+      <li><b>Who decides.</b> Decisions about a real patient rest with the treating clinicians, using current clinical guidelines, complete clinical information and their own professional judgment. The software is provided &ldquo;as is&rdquo;, without warranty (Apache License, Version 2.0).</li>
+      <li><b>Your data.</b> Everything runs in your browser and nothing is sent anywhere. Please do not type patient names or other identifying details.</li>
+    </ul>
+    <div class="m-actions">
+      <button type="button" id="noticeOk">I understand &mdash; continue</button>
+      <span class="m-note">Full notice: <a href="https://github.com/drmarolla/rmti-oncology-sandbox/blob/main/DISCLAIMER.md" target="_blank" rel="noopener">DISCLAIMER.md</a> in the project repository.</span>
+    </div>
+  </div>
+</div>
 
 <script>
 const C_VALUES = [0.10, 0.30, 0.50, 0.75, 1.00];
@@ -401,22 +433,30 @@ const TIER_LABELS = ['Low','Moderate','High','Severe','Critical'];
 const TIER_COLORS = ['#6f9c78','#c99a2e','#d9822f','#c1502f','#7a2419'];
 
 function tierIndex(R){
-  if (!Number.isFinite(R)) return -1;
+  if (!Number.isFinite(R)) return -1; // invalid score — caller must not treat this as a real tier
   for(let i=0;i<TIER_BOUNDS.length;i++){ if(R < TIER_BOUNDS[i]) return i; }
   return 4;
 }
 function roundTo(x, d){
+  // Corrects the classic binary-float artifact where an exact decimal
+  // like 0.0585 is stored as 0.058499999999999996, which would otherwise
+  // round the wrong way. Mirrors the Decimal(ROUND_HALF_UP) path in the
+  // Python reference implementation (rmti_core.py).
   const f = Math.pow(10, d);
   const eps = x >= 0 ? 1e-9 : -1e-9;
   return Math.round(x * f + eps) / f;
 }
 function fmt(x, d=3){ return roundTo(Number(x), d).toFixed(d); }
 
+/* ---------------- Domain configuration ---------------- */
 const DOMAINS = {
   health: {
     label: 'Public Health / Oncology Surveillance',
     note: 'First applied to hepatocellular carcinoma (HCC) surveillance triage (Marolla, 2026, in preparation). Likelihood comes from a validated risk score (aMAP, THRI); vulnerability from hepatic reserve (ALBI); resilience from surveillance-delivery adequacy.',
     labels: {L:'Likelihood (L)', E:'Exposure (E)', V:'Vulnerability (V)', rho:'Resilience (ρ)', C:'Consequence (C)'},
+    compareLabel: 'Compare against a planned surveillance improvement',
+    afterLabel: 'Resilience after surveillance improvement (ρ)',
+    reductionWord: 'a surveillance improvement',
     sub: {
       L:'Annualized HCC probability, supplied by a validated score (aMAP / THRI / hccrisk.com).',
       E:'Share of the at-risk population within the active surveillance footprint.',
@@ -425,10 +465,10 @@ const DOMAINS = {
     },
     cLabels: [['Very early','BCLC 0'], ['Early','BCLC A'], ['Early-intermediate','—'], ['Intermediate','BCLC B'], ['Advanced','BCLC C–D']],
     tierActions: ['framework reading: lowest band, consistent with routine, guideline-based surveillance intervals','framework reading: guideline-concordant surveillance appears adequate; worth checking that it is actually delivered','framework reading: the clinical team may wish to review surveillance intensity, outreach and patient navigation','framework reading: the clinical team may wish to review the timing of work-up and the treatment-pathway options','framework reading: the clinical team may wish to consider prompt specialist review'],
-    eLogBounds: {min:10, max:650000},
+    eLogBounds: {min:100, max:5000000},   // same as RMTI-Py N_MIN_HCC / N_MAX_HCC
     showPop: true,
     popLabel: 'At-risk cohort size (N)',
-    equityLabel: 'per 1M at-risk patients',
+    equityLabel: 'per 1,000,000 at-risk patients',
     examples: [
       {name:'Untreated HBV', N:100000, L:0.90, E:0.70, V:0.55, rhoNow:0.10, rhoAfter:0.45, C:5},
       {name:'Active viral cirrhosis', N:100000, L:0.55, E:0.70, V:0.53, rhoNow:0.50, rhoAfter:0.65, C:5},
@@ -445,6 +485,9 @@ const DOMAINS = {
     label: 'Custom / Your Field',
     note: 'The same four terms generalize to any surveillance or care setting where something raises risk (hazard × exposure × vulnerability) and something absorbs it (resilience). Type the name of your field and the case you are analysing, relabel the inputs if you wish, and score it — for example another cancer, an epidemic early-warning system, a screening programme, or a hospital service line.',
     labels: {L:'Likelihood (L)', E:'Exposure (E)', V:'Vulnerability (V)', rho:'Resilience (ρ)', C:'Consequence (C)'},
+    compareLabel: 'Compare against a planned improvement in surveillance or care',
+    afterLabel: 'Resilience after improvement (ρ)',
+    reductionWord: 'an improvement',
     sub: {
       L:'How probable the adverse event (disease, outbreak, missed or delayed diagnosis) is in your planning horizon.',
       E:'Share of the at-risk population or caseload inside the surveillance or service footprint.',
@@ -453,10 +496,10 @@ const DOMAINS = {
     },
     cLabels: [['Negligible','minimal'], ['Minor','contained'], ['Moderate','material'], ['Major','severe'], ['Catastrophic','critical']],
     tierActions: ['Monitor & maintain baseline','Low-regret preventive measures','Structured mitigation planning','Priority intervention & funding','Immediate, system-level response'],
-    eLogBounds: {min:10, max:1000000},
+    eLogBounds: {min:100, max:5000000},   // same as the health domain (RMTI-Py HCC bounds)
     showPop: true,
     popLabel: 'At-risk population / cohort size (N)',
-    equityLabel: 'per 1M units',
+    equityLabel: 'per 1,000,000 at-risk units',
     examples: []
   }
 };
@@ -464,33 +507,45 @@ const DOMAINS = {
 
 const DEFAULT_DOMAIN = 'health';
 
+/* ---- Release info. After your Zenodo release, put the concept DOI between the quotes (for example '10.5281/zenodo.1234567') and raise the version. ---- */
 const RMTI_RELEASE = {
-  version: '2.0.0',
-  doi: '10.5281/zenodo.22909081',
-  versionDoi: '',
+  version: '2.1.0',
+  doi: '10.5281/zenodo.22909090',         // concept DOI — always resolves to the latest version; cite this in running text
+  versionDoi: '',  // TODO: fill in after uploading v2.1.0 as a new Zenodo version — Zenodo assigns this number at upload time, it can't be known beforehand. Was '10.5281/zenodo.22909091' for v1.0.1.
   repo: 'https://github.com/drmarolla/rmti-oncology-sandbox',
   license: 'Apache License 2.0',
   author: 'Marolla, C.',
   year: 2026,
-  title: 'RMTI Sandbox — Oncology: Reference Implementation of the Risk Mechanism Theory Index'
+  title: 'RMTI Sandbox — Oncology and Public Health Surveillance: Reference Implementation of the Risk Mechanism Theory Index'
 };
-const INLINE_NOTICE = '';
+const INLINE_NOTICE = "Research-framework reading only. Not a diagnosis, prognosis or treatment recommendation for any patient. Decisions rest with the treating clinical team, current guidelines and their professional judgment.";
 const TERM_SYMBOLS = {L:'L', E:'E', V:'V', rho:'ρ', C:'C'};
 const CUSTOM_START = {L:0.50, E:0.50, V:0.50, rhoNow:0.20, rhoAfter:0.50, C:3, N:0};
 
+/* ---- Saved-case persistence (localStorage, this browser only) ----
+   Key is unique to this sandbox: GitHub Pages project sites under the same
+   account (e.g. disaster-science and oncology) share one origin, and
+   localStorage is scoped by origin, not by path — so an unqualified key
+   would let saved cases leak between sandboxes. Storage stays entirely
+   client-side, consistent with "nothing is sent anywhere" — do not put
+   patient-identifiable details in a saved case name or field name. */
 const SAVED_CASES_KEY = 'rmti_oncology_saved_cases_v1';
 function loadSavedCases(){
   try {
     const raw = localStorage.getItem(SAVED_CASES_KEY);
     const parsed = raw ? JSON.parse(raw) : [];
     return Array.isArray(parsed) ? parsed : [];
-  } catch(e){ return []; }
+  } catch(e){ return []; } // storage unavailable (private browsing, blocked cookies, etc.)
 }
 function persistSavedCases(){
   try { localStorage.setItem(SAVED_CASES_KEY, JSON.stringify(state.saved)); }
-  catch(e){ }
+  catch(e){ /* fail silently — cases still work for this session */ }
 }
 
+/* ---- Export saved cases as JSON, and import them back in ----
+   localStorage alone never leaves the browser that wrote it. Export lets a
+   reviewer archive a case set outside the browser, move it to another
+   device, or hand it to a co-author; Import reads that file back in. */
 const SANDBOX_ID = 'oncology';
 const CASES_EXPORT_SCHEMA = 'rmti-saved-cases';
 const CASES_EXPORT_SCHEMA_VERSION = 1;
@@ -504,6 +559,10 @@ function isValidCaseShape(item){
 }
 
 function sanitizeCase(item){
+  // Coerce an imported record to exactly the shape this app writes itself,
+  // dropping unknown fields and clamping numbers into valid ranges — an
+  // edited-by-hand or foreign JSON file should never be able to inject bad
+  // state (out-of-range sliders, a non-integer tier, script content, etc.).
   const tl = item.termLabels || {};
   return {
     fieldName: String(item.fieldName || '').slice(0, 80),
@@ -534,28 +593,7 @@ function showCaseIoStatus(msg, isError){
   showCaseIoStatus._t = setTimeout(()=>{ el.hidden = true; }, 7000);
 }
 
-async function saveFileEverywhere(filename, blob){
-  try {
-    if (typeof claude !== 'undefined' && claude.use) {
-      const downloads = await claude.use('downloads');
-      if (downloads) {
-        await downloads.save({filename, data: blob});
-        return true;
-      }
-    }
-  } catch (e) { }
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  setTimeout(()=> URL.revokeObjectURL(url), 1000);
-  return true;
-}
-
-async function exportSavedCases(){
+function exportSavedCases(){
   if (!state.saved.length){
     showCaseIoStatus('No saved cases to export yet — save a case first.', true);
     return;
@@ -569,13 +607,14 @@ async function exportSavedCases(){
     cases: state.saved
   };
   const blob = new Blob([JSON.stringify(payload, null, 2)], {type: 'application/json'});
-  const filename = `rmti-${SANDBOX_ID}-saved-cases-${payload.exportedAt.slice(0,10)}.json`;
-  try {
-    await saveFileEverywhere(filename, blob);
-  } catch (e) {
-    showCaseIoStatus('Could not save the file — your browser may have blocked the download.', true);
-    return;
-  }
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `rmti-${SANDBOX_ID}-saved-cases-${payload.exportedAt.slice(0,10)}.json`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=> URL.revokeObjectURL(url), 1000);
   showCaseIoStatus(`Exported ${state.saved.length} saved case${state.saved.length===1?'':'s'} to a .json file.`);
 }
 
@@ -589,6 +628,8 @@ function importSavedCasesFromText(text){
   if (!list){ showCaseIoStatus('That JSON file does not contain a list of cases.', true); return; }
 
   if (isWrapped && parsed.sandbox && parsed.sandbox !== SANDBOX_ID){
+    // Not fatal: the Custom-domain case shape is shared across every RMTI
+    // sandbox, so a file from another sandbox will still load — just flag it.
     showCaseIoStatus(`Note: this file was exported from the "${parsed.sandbox}" sandbox. Importing anyway…`);
   }
 
@@ -620,15 +661,16 @@ let state = {
   domain: DEFAULT_DOMAIN,
   L: 0.80, E: 0.85, V: 0.75, rhoNow: 0.20, rhoAfter: 0.58, C: 4, N: 0,
   compare: true,
-  fieldName: '',
-  caseName: '',
-  termLabels: {L:'', E:'', V:'', rho:'', C:''},
-  loaded: null,
-  saved: loadSavedCases(),
-  activeSavedItem: null,
-  customDraft: null
+  fieldName: '',          // Custom: field of study typed by the user
+  caseName: '',           // name of the loaded example, or the case typed by the user
+  termLabels: {L:'', E:'', V:'', rho:'', C:''},   // Custom: optional relabelling
+  loaded: null,           // snapshot of the loaded preset, to detect edits
+  saved: loadSavedCases(), // Custom: cases saved by the user, persisted in this browser
+  activeSavedItem: null,  // reference to the saved-case object currently on screen, if any
+  customDraft: null       // Custom: numbers kept while the user visits another tab
 };
 
+/* ---------------- Build static chrome: tabs, tier table ---------------- */
 const tabsEl = document.getElementById('tabs');
 Object.keys(DOMAINS).forEach(key=>{
   const b = document.createElement('button');
@@ -643,12 +685,15 @@ const tierTableEl = document.getElementById('tierTable');
 TIER_LABELS.forEach((lbl,i)=>{
   const lo = i===0 ? '0' : fmt(TIER_BOUNDS[i-1],2);
   const hi = i===4 ? '1.0' : fmt(TIER_BOUNDS[i],2);
+  // tierIndex() uses strict "<" against each upper bound, so every band is
+  // [lo, hi) except the last, which is closed at the top ([lo, 1.0]).
   const range = i===4 ? '≥ '+lo : (i===0 ? '< '+hi : '[' + lo + ', ' + hi + ')');
   const tr = document.createElement('tr');
   tr.innerHTML = `<td><span class="tier-dot" style="background:${TIER_COLORS[i]}"></span>${lbl}</td><td>${range}</td>`;
   tierTableEl.appendChild(tr);
 });
 
+/* ---------------- Wire up inputs ---------------- */
 const els = {};
 ['L','E','V','rho','rhoAfter'].forEach(k=>{ els[k] = document.getElementById('in-'+k); });
 els.N = document.getElementById('in-N');
@@ -663,10 +708,13 @@ const ealAfterBox = document.getElementById('ealAfterBox');
 function syncSliderFill(el){
   const pct = ((el.value - el.min) / (el.max - el.min)) * 100;
   el.style.setProperty('--pct', pct+'%');
+  // Keep the floating number next to the slider in sync with its value.
+  // Sliders are id="in-<key>"; their number labels are id="val-<key>".
   const valEl = document.getElementById(el.id.replace(/^in-/, 'val-'));
   if (valEl) valEl.textContent = fmt(Number(el.value), 2);
 }
 
+/* Labels: the Custom domain lets the user rename the five inputs (text set via textContent only) */
 function termLabel(cfg, k){
   const typed = (state.domain==='custom' ? state.termLabels[k] : '').trim();
   return typed ? `${typed} (${TERM_SYMBOLS[k]})` : cfg.labels[k];
@@ -681,6 +729,7 @@ function applyLabels(){
 function switchDomain(key){
   const prev = state.domain;
   if (prev === 'custom' && key !== 'custom'){
+    // remember the user's Custom draft so switching tabs never loses their numbers
     state.customDraft = {L:state.L, E:state.E, V:state.V, rhoNow:state.rhoNow, rhoAfter:state.rhoAfter, C:state.C, N:state.N};
   }
   state.domain = key;
@@ -692,6 +741,8 @@ function switchDomain(key){
   document.getElementById('sub-E').textContent = cfg.sub.E;
   document.getElementById('sub-V').textContent = cfg.sub.V;
   document.getElementById('sub-rho').textContent = cfg.sub.rho;
+  document.getElementById('compareLabelText').textContent = cfg.compareLabel;
+  document.getElementById('lbl-rhoAfter').textContent = cfg.afterLabel;
   document.getElementById('popRow').style.display = cfg.showPop ? 'flex' : 'none';
   els.N.placeholder = cfg.popLabel;
   document.getElementById('customPanel').hidden = (key!=='custom');
@@ -703,6 +754,7 @@ function switchDomain(key){
   if (cfg.examples.length){
     loadExample(cfg.examples[0]);
   } else {
+    // Custom: start from neutral mid-scale values (or the user's own draft), never from another domain's example
     setInputs(state.customDraft || CUSTOM_START);
     state.loaded = null;
     state.fieldName = els.field.value.trim();
@@ -731,7 +783,7 @@ function buildExamples(cfg){
     if (!state.saved.length){
       const hint = document.createElement('span');
       hint.style.cssText = 'font-size:12.5px;color:var(--muted);';
-      hint.textContent = 'No saved cases yet: name your field and case above, set the sliders, then choose "Save as example" — or Import a previously exported .json file.';
+      hint.textContent = 'No saved cases yet: name your field and case above, set the sliders, then choose “Save as example” — or Import a previously exported .json file.';
       row.appendChild(hint);
       return;
     }
@@ -748,6 +800,7 @@ function buildExamples(cfg){
         state.saved.splice(idx,1);
         persistSavedCases();
         if (wasActive){
+          // The case on screen was just deleted — don't keep presenting it.
           state.activeSavedItem = null;
           state.fieldName = ''; state.caseName = '';
           els.field.value = ''; els.case.value = '';
@@ -768,7 +821,6 @@ function buildExamples(cfg){
     const chip = document.createElement('div');
     chip.className = 'example-chip' + (ex.demo ? ' demo' : '');
     chip.textContent = ex.name;
-    if (ex.source) chip.title = ex.source;
     chip.onclick = ()=> loadExample(ex);
     row.appendChild(chip);
   });
@@ -813,12 +865,16 @@ els.V.addEventListener('input', ()=>{ state.V = +els.V.value; syncSliderFill(els
 els.rho.addEventListener('input', ()=>{ state.rhoNow = +els.rho.value; syncSliderFill(els.rho); render(); });
 els.rhoAfter.addEventListener('input', ()=>{ state.rhoAfter = +els.rhoAfter.value; syncSliderFill(els.rhoAfter); render(); });
 els.N.addEventListener('input', ()=>{
+  // Strict input: only non-negative integers make it into state. Anything
+  // else (blank, negative, decimal, non-numeric) is treated as 0 rather
+  // than silently becoming NaN and cascading into the tier calculation.
   const raw = Math.trunc(Number(els.N.value));
   state.N = (Number.isFinite(raw) && raw >= 0) ? raw : 0;
   if (els.N.value !== '' && String(state.N) !== els.N.value) els.N.value = state.N;
   render();
 });
 
+/* Custom / Your Field: typed names and relabelling */
 els.field.addEventListener('input', ()=>{ state.fieldName = els.field.value.trim(); render(); });
 els.case.addEventListener('input', ()=>{ state.caseName = els.case.value.trim(); render(); });
 Object.keys(relabelEls).forEach(k=>{
@@ -843,7 +899,7 @@ document.getElementById('btn-export').addEventListener('click', exportSavedCases
 document.getElementById('btn-import').addEventListener('click', ()=> document.getElementById('fileImport').click());
 document.getElementById('fileImport').addEventListener('change', (ev)=>{
   const file = ev.target.files && ev.target.files[0];
-  ev.target.value = '';
+  ev.target.value = ''; // reset so importing the same filename again still fires 'change'
   if (!file) return;
   const reader = new FileReader();
   reader.onload = ()=> importSavedCasesFromText(String(reader.result || ''));
@@ -860,6 +916,8 @@ compareToggle.addEventListener('change', ()=>{
 
 document.getElementById('btn-elog').addEventListener('click', ()=>{
   const cfg = DOMAINS[state.domain];
+  // N must be a positive finite number to take a log — anything else falls
+  // back to 1 (the log-scale floor) instead of producing NaN.
   const N = (Number.isFinite(state.N) && state.N > 0) ? state.N : 1;
   const eLog = (Math.log10(N) - Math.log10(cfg.eLogBounds.min)) / (Math.log10(cfg.eLogBounds.max) - Math.log10(cfg.eLogBounds.min));
   const clamped = Math.max(0, Math.min(1, eLog));
@@ -869,6 +927,7 @@ document.getElementById('btn-elog').addEventListener('click', ()=>{
   render();
 });
 
+/* ---------------- Core RMTI math (mirrors rmti_core.py) ---------------- */
 function score(L,E,V,rho,C){
   const IR = L*E*V;
   const R = IR*(1-rho);
@@ -879,6 +938,7 @@ function pctReduction(rhoNow, rhoAfter){
   return (1 - (1-rhoAfter)/(1-rhoNow)) * 100;
 }
 
+/* ---------------- Assessment title (field · case), like the named worked examples ---------------- */
 function renderAssessName(){
   const el = document.getElementById('assessName');
   el.textContent = '';
@@ -905,6 +965,7 @@ function renderAssessName(){
   }
 }
 
+/* ---------------- Render ---------------- */
 function render(){
   const cfg = DOMAINS[state.domain];
   const now = score(state.L, state.E, state.V, state.rhoNow, state.C);
@@ -922,11 +983,13 @@ function render(){
     ? '<b>Invalid input</b> — check that every field is a valid number before reading a tier.'
     : `<b>${TIER_LABELS[tIdx]} tier</b> — ${cfg.tierActions[tIdx]}`;
 
+  // scale bar: color segments go in the clipped track; markers go in the
+  // unclipped wrap (as siblings of the track) so the needle/label aren't cut off
   const track = document.getElementById('scaleTrack');
   const wrap = document.getElementById('scaleWrap');
   track.innerHTML = '';
   wrap.querySelectorAll('.marker').forEach(m=>m.remove());
-  const widths = [5,10,20,25,40];
+  const widths = [5,10,20,25,40]; // proportional widths for 0-.05,.05-.15,.15-.35,.35-.6,.6-1
   widths.forEach((w,i)=>{
     const seg = document.createElement('div');
     seg.style.width = w+'%';
@@ -949,6 +1012,7 @@ function render(){
     wrap.appendChild(afterMarker);
   }
 
+  // equation box
   let eq = `<span class="r1">IR</span> = ${fmt(state.L,2)} · ${fmt(state.E,2)} · ${fmt(state.V,2)} = <b>${fmt(now.IR)}</b><br>`;
   eq += `<span class="r1">R</span>  = ${fmt(now.IR)} · (1 − ${fmt(state.rhoNow,2)}) = <b>${fmt(now.R)}</b>  [${TIER_LABELS[tIdx]}]`;
   if (state.compare){
@@ -957,6 +1021,7 @@ function render(){
   }
   document.getElementById('eqBox').innerHTML = eq;
 
+  // EAL
   document.getElementById('ealNow').textContent = fmt(now.EAL);
   document.getElementById('ealNowSub').textContent = `C = ${fmt(C_VALUES[state.C-1],2)} (${cfg.cLabels[state.C-1][0]})`;
   ealAfterBox.style.display = state.compare ? 'block' : 'none';
@@ -972,10 +1037,11 @@ function render(){
     document.getElementById('reductionNote').innerHTML =
       `Raising resilience from <b>${fmt(state.rhoNow,2)}</b> to <b>${fmt(state.rhoAfter,2)}</b> cuts residual risk by <b>${fmt(pct,1)}%</b> (${tierMoveTxt}).`;
   } else {
-    document.getElementById('reductionNote').innerHTML = 'Enable the comparison toggle to model a resilience investment and see the tier movement.';
+    document.getElementById('reductionNote').innerHTML = `Enable the comparison toggle to model ${cfg.reductionWord} and see the tier movement.`;
   }
 }
 
+/* ---------------- Release slots in the footer ---------------- */
 (function(){
   const v = document.getElementById('verSlot'), d = document.getElementById('doiSlot'),
         r = document.getElementById('repoSlot'), lic = document.getElementById('licenseSlot'),
@@ -1004,6 +1070,10 @@ function render(){
 
   if (d){
     if (RMTI_RELEASE.doi){
+      // Show both DOIs, the way Zenodo's own record page does: the concept
+      // DOI (always resolves to the newest version — cite this in running
+      // text) and, when known, this exact version's DOI (frozen forever —
+      // cite this to pin precisely what a reviewer evaluated).
       const concept = document.createElement('a');
       concept.href = 'https://doi.org/' + RMTI_RELEASE.doi; concept.rel = 'noopener';
       concept.textContent = RMTI_RELEASE.doi;
@@ -1020,6 +1090,9 @@ function render(){
   }
 
   if (cite && RMTI_RELEASE.author && RMTI_RELEASE.title){
+    // A ready-to-copy citation, matching the APA string Zenodo generates for
+    // this exact version — so a reader doesn't have to click through just to
+    // cite the tool correctly.
     const citeDoi = RMTI_RELEASE.versionDoi || RMTI_RELEASE.doi;
     cite.textContent = `Suggested citation: ${RMTI_RELEASE.author} (${RMTI_RELEASE.year}). ${RMTI_RELEASE.title} (Version v${RMTI_RELEASE.version}) [Computer software]. Zenodo. `;
     if (citeDoi){
@@ -1031,6 +1104,26 @@ function render(){
   }
 })();
 
+/* ---------------- Oncology notice (modal + persistent banner) ---------------- */
+(function(){
+  const modal = document.getElementById('noticeModal');
+  if (!modal) return;
+  const ok = document.getElementById('noticeOk');
+  const open = document.getElementById('btn-notice');
+  let acknowledged = false;
+  function show(){ modal.hidden = false; document.body.style.overflow = 'hidden'; ok.focus(); }
+  function hide(){ modal.hidden = true; document.body.style.overflow = ''; acknowledged = true; if (open) open.focus(); }
+  ok.addEventListener('click', hide);
+  if (open) open.addEventListener('click', show);
+  document.addEventListener('keydown', function(e){
+    if (modal.hidden) return;
+    if (e.key === 'Escape' && acknowledged) hide();
+    if (e.key === 'Tab') { e.preventDefault(); ok.focus(); }   // single focusable control: keep focus inside the dialog
+  });
+  show();
+})();
+
+/* ---------------- Init ---------------- */
 [els.L, els.E, els.V, els.rho, els.rhoAfter].forEach(syncSliderFill);
 switchDomain(DEFAULT_DOMAIN);
 </script>
